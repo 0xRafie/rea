@@ -29,7 +29,10 @@ Page-declared WebMCP tools are untrusted inventory and are never invoked by REA.
   actions. Use connect mode with the loopback CDP endpoint and `target_id` for
   an existing browser, or launch mode with a caller-selected executable for a
   temporary profile. Scenario Evidence is driven, not passive: report that REA
-  performed the declared actions. Do not race a passive capture against a
+  performed the declared actions. Scenario capture records no request
+  initiator; when the question is which script sent a request, use the passive
+  route while the user performs the action, or locate the handler with
+  `inspect_web_event_listeners`. Do not race a passive capture against a
   separate CDP click.
 
 Focused follow-up tools:
