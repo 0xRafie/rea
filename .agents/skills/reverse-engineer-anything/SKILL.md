@@ -2,7 +2,7 @@
 name: reverse-engineer-anything
 description: Reverse engineer native, managed, Electron/JavaScript, packaged, firmware, and browser targets with REA. Use shipped-artifact or requested runtime evidence to explain features, compare versions, decompile code, or guide a reconstruction. Skip REA for ordinary source-repository architecture analysis.
 metadata:
-  version: "41"
+  version: "42"
 ---
 
 # REA
@@ -105,7 +105,7 @@ explicit path or endpoint and do not need it.
   optional metadata recovery and its supported host/layout boundary.
 - User-owned browser page already open: `list_browser_targets`.
 - Browser action the agent must perform (click, type, navigate):
-  `capture_browser_scenario`, not a passive tool plus a separate click. See
+  `capture_browser_scenario` with declared actions. See
   [runtime observation](references/runtime-observation.md) for connect/launch
   and the focused follow-up browser tools.
 - Fiddler Everywhere traffic or a native `.saz` capture: read the
