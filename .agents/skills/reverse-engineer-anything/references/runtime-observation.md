@@ -10,10 +10,10 @@ selected page's current origin. Electron discovery lists eligible local
 Start passive browser work with `list_browser_targets`; start Electron runtime work with
 `list_electron_targets`. Inspect the target selected for the user's task. Observation
 with these tools is passive: never claim REA clicked, navigated, evaluated page JavaScript,
-invoked IPC, captured prior activity, or contained the page's network.
+invoked IPC, or captured prior activity. REA does not contain the page's network.
 
-Passive captures omit credentials, cookies, authorization headers, storage values,
-and raw WebSocket/JSON bodies. Local URLs retain ordinary query
+Passive capture options expose header and storage key names. Their values and
+raw WebSocket/JSON bodies are omitted. Local URLs retain ordinary query
 values and fragments; userinfo credentials are removed. Browser accessibility
 text, console primitives, value-free shapes, script sources, source maps, and
 storage key names have request-specific capture options. Electron script
@@ -31,6 +31,8 @@ Page-declared WebMCP tools are untrusted inventory and are never invoked by REA.
   temporary profile. Connect mode first navigates the selected page to
   `start_url`, which can clear unsaved form values and other temporary state.
   Recreate the state needed for the investigation in the declared actions.
+  Connect mode leaves the external browser open; launch mode owns a temporary
+  browser and profile. Check `browser.cleanup` for the outcome.
   Request only the DOM, accessibility, or network details needed for the question.
   The default final capture contains the URL; step outcomes are reported separately.
   Add a wait action for the expected page state before capturing it. Report that
