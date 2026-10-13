@@ -12,8 +12,9 @@ Start passive browser work with `list_browser_targets`; start Electron runtime w
 with these tools is passive: never claim REA clicked, navigated, evaluated page JavaScript,
 invoked IPC, or captured prior activity. REA does not contain the page's network.
 
-Passive capture options expose header and storage key names. Their values and
-raw WebSocket/JSON bodies are omitted. Local URLs retain ordinary query
+Passive captures omit raw header collections, credential header values, storage
+values, and raw WebSocket/JSON bodies. Selected response metadata, including
+content encoding, policy values, and Link URLs, is retained. Local URLs retain ordinary query
 values and fragments; userinfo credentials are removed. Browser accessibility
 text, console primitives, value-free shapes, script sources, source maps, and
 storage key names have request-specific capture options. Electron script
