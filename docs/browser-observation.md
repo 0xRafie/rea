@@ -8,6 +8,10 @@ exported script's native imports under an explicit URL/import-map context.
 
 REA can attach to a user-owned Chrome-family browser through the Chrome DevTools Protocol (CDP) and produce bounded Evidence about an existing page. This is a passive reverse-engineering capability, not a general browser automation or remote-control surface.
 
+For request/response bodies and traffic debugging, see
+[Fiddler Everywhere captures and MCP](web-network-captures.md#reading-fiddler-captures-saz).
+Inspect native SAZ or HAR 1.2 offline with REA, or connect Everywhere's separate MCP server.
+
 ## Shipped surfaces
 
 - `list_browser_targets` / `rea list-browser-targets` discovers all eligible page targets at the endpoint by default, with an optional exact-origin filter.
@@ -86,7 +90,9 @@ Chromium as `chromium-browser`.
 REA needs the browser's HTTP discovery endpoint on a loopback port. A browser
 driven over `--remote-debugging-pipe` or a private channel, for example by an
 automation SDK, exposes no such endpoint, so `list_browser_targets` has nothing
-to attach to; a port with no discovery endpoint reports `endpoint_unreachable`.
+to attach to. Connection failures report `endpoint_unreachable`; a reachable
+HTTP service that returns a non-200 or non-JSON discovery response reports
+`invalid_endpoint_response`.
 Reproduce that flow in a Chromium-family browser started with
 `--remote-debugging-port`.
 
