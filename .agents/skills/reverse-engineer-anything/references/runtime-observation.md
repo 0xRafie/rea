@@ -28,7 +28,10 @@ Page-declared WebMCP tools are untrusted inventory and are never invoked by REA.
 - The agent must perform it: one `capture_browser_scenario` with declared
   actions. Use connect mode with the loopback CDP endpoint and `target_id` for
   an existing browser, or launch mode with a caller-selected executable for a
-  temporary profile. Select DOM, accessibility, or network capture to retain the
+  temporary profile. Connect mode first navigates the selected page to
+  `start_url`, which can clear unsaved form values and other temporary state.
+  Recreate the state needed for the investigation in the declared actions.
+  Select DOM, accessibility, or network capture to retain the
   result needed for the question; the default retains only the final URL. Wait
   for the resulting page state before capturing it. Scenario Evidence is
   driven, not passive: report that REA
